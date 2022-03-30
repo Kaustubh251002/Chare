@@ -23,6 +23,10 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
+var networkId = process.env.npm_package_config_ganache_networkId;
+var gasPrice = process.env.npm_package_config_ganache_gasPrice;
+var gasLimit = process.env.npm_package_config_ganache_gasLimit;
+
 module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -41,11 +45,13 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+     host: "127.0.0.1",     // Localhost (default: none)
+     port: 8545,            // Standard Ethereum port (default: none)
+     network_id: networkId,
+     gas: gasLimit,
+     gasPrice: gasPrice
+    }
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -70,6 +76,10 @@ module.exports = {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
+    // }
+    // development: {
+    //   host: "localhost",
+    //   port: 8545
     // }
   },
 
