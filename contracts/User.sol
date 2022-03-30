@@ -63,7 +63,7 @@ contract User is Ownable{
     
     //Self Destruct
       function kill() public onlyOwner{
-            selfdestruct(msg.sender);
+            selfdestruct(payable(msg.sender));
     }
     
 }
