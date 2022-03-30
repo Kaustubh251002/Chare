@@ -1,15 +1,15 @@
-// "SPDX-License-Identifier: UNLICENSED"
+// SPDX-License-Identifier: UNLICENSED
 
 pragma solidity >= 0.4.0 < 0.9.0;
-import 'Ownable.sol';
-import 'SafeMath.sol';
+import './Ownable.sol';
+import './SafeMath.sol';
 
 // File: openzeppelin-solidity/contracts/math/SafeMath.sol
 /**
  * @title SafeMath
  * @dev Unsigned math operations with safety checks that revert on error
  */
-contract Driver is Ownable, SafeMath{
+contract Driver is Ownable {
     
     //Main Info Variables
     
@@ -134,6 +134,6 @@ contract Driver is Ownable, SafeMath{
     
     //Self Destruct
       function kill() public onlyOwner{
-            selfdestruct(msg.sender);
+            selfdestruct(payable(msg.sender));
     }   
 }
